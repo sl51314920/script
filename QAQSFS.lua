@@ -73,8 +73,8 @@ local ContinueButtonUID = false;
 local DungeonContinueButton = false;
 local AreaMaps = {"Server Boss","Area 1","Area 2","Area 3","Area 4","Area 5","Area 6","Area 7","Area 8","Area 9","Area 10","Area 11","Area 12","Area 13","Area 14","Area 15","Area 16","Area 17"};
 local Buy_Egg_Args = {eggName="Egg 25",auto=false,amount=4};
-local AllMobs = {["Server Boss"]={"Water Drop OverLord","Kal'zim the Exiled Demon","Cherry Blossom Warrior"},["Area 1"]={"Goblin","Orc","Dark Knight","Dark Commander","Sea Emperor"},["Area 2"]={"Skeleton","Pirate Thief","Pirate Captain","Pirate Admiral"},["Area 3"]={"Ninja","Samurai","Samurai Master","Oni"},["Area 4"]={"Penguin","Snow Warrior","Yeti","Ice King"},["Area 5"]={"Monk","Angel","Guardian","Zeus the God"},["Area 6"]={"Imp","Demon","Lava Golem","Red Devil"},["Area 7"]={"Mummy","Royal Warrior","Desert Beast","King Pharaoh"},["Area 8"]={"Satyr","Cyclops","Purple Dragon","Adurite Warden","Lost Soul"},["Area 9"]={"Mushy","Zombie Miner","Golem","Necromancer","Blood Zombie","Blood Vampire"},["Area 10"]={"Power Force","Paladin","Warlock","Spirit Lord","Brown Insect","Green Insect","Mutant Insect"},["Area 11"]={"Marine","Barbarian Pirate","Madman","Skye Knight","Malevolent Spirit","Lost Titan","Blood Knight","Comet Crash"},["Area 12"]={"Feathered Warrior","Cthulhu","Centaur King","Celestial Gatekeeper","Skywatcher","Stormbringer","Vulcanus Maximus","Demonic Altar","Comet Crash"},["Area 13"]={"Dune Critter","Reptilian Beast","Sandstone Golem","Scorpion Queen","Haunted Witch","Haunted Reaper","Nightstalker","Forsaken Hunter","Comet Crash"},["Area 14"]={"Small Titan","Cart Titan","Beast Titan","Colossus Titan","Founding Titan","Warhammer Titan","Jaw Titan","Comet Crash"},["Area 15"]={"Poseidon's Warrior","Undertides Bounty Hunter","Seaborn","Unknown Deep Sea Diver","Abyssal Hunter","Amaia","Gawain the Half Shark Man","Comet Crash"},["Area 16"]={"Magma Monster","Underwold Dealer","Undead Knight","Lucifer","Corrupted Demon","Scarlet Fiend","Hell's Warrior","Muay Thai Demon","Comet Crash"},["Area 17"]={"Hapkido Grandmaster","Black Tiger","Crimson Phoenix","Dragon Whisperer","Korean Wind","Korean Sunrise","Seoul Shogun","Comet Crash"}};
-local BloodMoonMobs = {"Nightstalker","Warhammer Titan","Jaw Titan","Amaia","Gawain the Half Shark Man","Hell's Warrior","Muay Thai Demon","Korean Sunrise","Seoul Shogun","Muay Thai Demon"};
+local AllMobs = {["Server Boss"]={"Water Drop OverLord","Kal'zim the Exiled Demon","Cherry Blossom Warrior"},["Area 1"]={"Goblin","Orc","Dark Knight","Dark Commander","Sea Emperor"},["Area 2"]={"Skeleton","Pirate Thief","Pirate Captain","Pirate Admiral"},["Area 3"]={"Ninja","Samurai","Samurai Master","Oni"},["Area 4"]={"Penguin","Snow Warrior","Yeti","Ice King"},["Area 5"]={"Monk","Angel","Guardian","Zeus the God"},["Area 6"]={"Imp","Demon","Lava Golem","Red Devil"},["Area 7"]={"Mummy","Royal Warrior","Desert Beast","King Pharaoh"},["Area 8"]={"Satyr","Cyclops","Purple Dragon","Adurite Warden","Lost Soul"},["Area 9"]={"Mushy","Zombie Miner","Golem","Necromancer","Blood Zombie","Blood Vampire"},["Area 10"]={"Power Force","Paladin","Warlock","Spirit Lord","Brown Insect","Green Insect","Mutant Insect"},["Area 11"]={"Marine","Barbarian Pirate","Madman","Skye Knight","Malevolent Spirit","Lost Titan","Blood Knight"},["Area 12"]={"Feathered Warrior","Cthulhu","Centaur King","Celestial Gatekeeper","Skywatcher","Stormbringer","Vulcanus Maximus","Demonic Altar"},["Area 13"]={"Dune Critter","Reptilian Beast","Sandstone Golem","Scorpion Queen","Haunted Witch","Haunted Reaper","Nightstalker","Forsaken Hunter"},["Area 14"]={"Small Titan","Cart Titan","Beast Titan","Colossus Titan","Founding Titan","Warhammer Titan","Jaw Titan"},["Area 15"]={"Poseidon's Warrior","Undertides Bounty Hunter","Seaborn","Unknown Deep Sea Diver","Abyssal Hunter","Amaia","Gawain the Half Shark Man","Water Drop Overlord"},["Area 16"]={"Magma Monster","Underwold Dealer","Undead Knight","Lucifer","Corrupted Demon","Scarlet Fiend","Hell's Warrior","Muay Thai Demon","Kal'zim the Exiled Demon"},["Area 17"]={"Hapkido Grandmaster","Black Tiger","Crimson Phoenix","Dragon Whisperer","Korean Wind","Korean Sunrise","Seoul Shogun","Cherry Blossom Warrior"}};
+local BloodMoonMobs = {"Nightstalker","Warhammer Titan","Jaw Titan","Amaia","Gawain the Half Shark Man","Hell's Warrior","Muay Thai Demon","Korean Sunrise","Seoul Shogun"};
 local ServerBossList = {"Water Drop Overlord","Kal'zim the Exiled Demon","Cherry Blossom Warrior"};
 local RunService = game:GetService("RunService");
 local HttpService = game:GetService("HttpService");
@@ -90,6 +90,7 @@ local GlobalBoss = Knit_Pkg.GetController("DatabaseController"):GetDatabase("Glo
 local UIController = Knit_Pkg.GetController("UIController");
 local TPController = Knit_Pkg.GetController("TeleportController");
 local WController = Knit_Pkg.GetController("WheelController");
+local KWController = Knit_Pkg.GetController("KoreanWheelController");
 local NPCController = Knit_Pkg.GetController("NPCController");
 local IllusionistService = Knit_Pkg.GetService("IllusionistService");
 local SkillService = Knit_Pkg.GetService("SkillService");
@@ -122,6 +123,8 @@ wait(1);
 TPController:Teleport({pos=GlobalBoss.spawnPos,areaName=nil,regionName="Global Boss",leaveGamemode=true});
 wait(1);
 local repo = "https://gitee.com/fudu_ji/SFS_Script/raw/master/LinoriaLibUI/";
+--local repo = "https://gitee.com/QAQlovesha/script/raw/master/LinoriaLibUI/";
+--local repo = "https://raw.githubusercontent.com/sl51314920/script/main/LinoriaLibUI/";
 local Library = loadstring(game:HttpGet(repo .. "Library.lua"))();
 local SaveManager = loadstring(game:HttpGet(repo .. "SaveManager.lua"))();
 SaveManager:SetFolder("SFSConfiguration");
@@ -1340,6 +1343,10 @@ task.spawn(function()
 				if (WheelTime <= 0) then
 					IllusionistService:ClaimTicket();
 				end
+                local KoreanWheelTime = 86400 - (os.time() - PlayerData.KoreanWheelStamp);
+                if (KoreanWheelTime <= 0) then
+                    KWController:SpinWheel(true);
+                end
 				wait(10);
 			end
 			wait(3);
